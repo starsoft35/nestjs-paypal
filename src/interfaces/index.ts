@@ -1,1 +1,1 @@
-export * from "./configure-async.options";
+export * from './configure-async.options';

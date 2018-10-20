@@ -1,16 +1,16 @@
-import { Test, TestingModule } from "@nestjs/testing";
-import { PaypalModule } from "../paypal.module";
-import * as path from "path";
-import { ConfigModule, ConfigService } from "nestjs-config";
+import { Test, TestingModule } from '@nestjs/testing';
+import { PaypalModule } from '../paypal.module';
+import * as path from 'path';
+import { ConfigModule, ConfigService } from 'nestjs-config';
 
-describe("PaypalModule", () => {
-  it("Instance forRoot", async () => {
+describe('PaypalModule', () => {
+  it('Instance forRoot', async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [
         PaypalModule.forRoot({
-          client_id: "",
-          client_secret: "",
-          mode: ""
+          client_id: '',
+          client_secret: '',
+          mode: ''
         })
       ]
     }).compile();
@@ -20,14 +20,14 @@ describe("PaypalModule", () => {
     expect(paypal).toBeInstanceOf(PaypalModule);
   });
 
-  it("Instance forRootAsync", async () => {
+  it('Instance forRootAsync', async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [
         PaypalModule.forRootAsync({
           useFactory: () => ({
-            client_id: "",
-            client_secret: "",
-            mode: ""
+            client_id: '',
+            client_secret: '',
+            mode: ''
           })
         })
       ]
@@ -38,15 +38,15 @@ describe("PaypalModule", () => {
     expect(paypal).toBeInstanceOf(PaypalModule);
   });
 
-  it("Instance forRootAsync with nestjs-config", async () => {
+  it('Instance forRootAsync with nestjs-config', async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [
         ConfigModule.load(
-          path.resolve(__dirname, "__stubs__", "config", "*.ts")
+          path.resolve(__dirname, '__stubs__', 'config', '*.ts')
         ),
         PaypalModule.forRootAsync({
           inject: [ConfigService],
-          useFactory: (config: ConfigService) => config.get("paypal")
+          useFactory: (config: ConfigService) => config.get('paypal')
         })
       ]
     }).compile();
