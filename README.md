@@ -2,7 +2,7 @@
 
 WIP
 
-A REST paypal module for (nestjs)[https://github.com/nestjs/nest].
+A REST paypal module for [nestjs](https://github.com/nestjs/nest).
 
 ## Installation 
 
