@@ -1,0 +1,2 @@
+export const PAYPAL_PROVIDER = 'PAYPAL_PROVIDER';
+export const PAYPAL_CONFIG = 'PAYPAL_CONFIG';

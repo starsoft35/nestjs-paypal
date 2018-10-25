@@ -10,7 +10,7 @@ describe("PaypalModule", () => {
         PaypalModule.forRoot({
           client_id: "",
           client_secret: "",
-          mode: ""
+          mode: "sandbox",
         })
       ]
     }).compile();
@@ -27,10 +27,10 @@ describe("PaypalModule", () => {
           useFactory: () => ({
             client_id: "",
             client_secret: "",
-            mode: ""
-          })
-        })
-      ]
+            mode: "sandbox",
+          }),
+        }),
+      ],
     }).compile();
 
     const paypal = module.get(PaypalModule);
@@ -42,13 +42,13 @@ describe("PaypalModule", () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [
         ConfigModule.load(
-          path.resolve(__dirname, "__stubs__", "config", "*.ts")
+          path.resolve(__dirname, "__stubs__", "config", "*.ts"),
         ),
         PaypalModule.forRootAsync({
           inject: [ConfigService],
-          useFactory: (config: ConfigService) => config.get("paypal")
-        })
-      ]
+          useFactory: (config: ConfigService) => config.get("paypal"),
+        }),
+      ],
     }).compile();
 
     const paypal = module.get(PaypalModule);
